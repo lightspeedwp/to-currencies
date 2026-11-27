@@ -3,6 +3,7 @@
   "extends": [
     "config:recommended"
   ],
+  "forkProcessing": "enabled",
   "timezone": "Africa/Johannesburg",
   "schedule": [
     "before 6am on monday"

@@ -4,6 +4,7 @@
 
 ### Changed
 - Renovate now handles dependency updates, set by `renovate.json`: weekly on Monday mornings (Africa/Johannesburg) for npm, Composer and GitHub Actions, with a weekly lock-file refresh. Major updates and lock-file refreshes open as draft pull requests, and Mergify only merges a Renovate pull request once the PHP syntax check passes.
+- Renovate's config sets `forkProcessing` to `enabled`. This repository is a GitHub fork of `lsx-currencies`, and Renovate skips forks unless their config opts in.
 - The PHP syntax check runs on pull requests into `develop` as well as `master`, using `php -l` instead of the unmaintained `overtrue/phplint@master` action. The `Cancel` workflow, which failed on every run because GitHub disabled the `set-env` command, is replaced by a `concurrency` group.
 
 ### Fixed
