@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+- Renovate now handles dependency updates, set by `renovate.json`: weekly on Monday mornings (Africa/Johannesburg) for npm, Composer and GitHub Actions, with a weekly lock-file refresh. Major updates and lock-file refreshes open as draft pull requests, and Mergify only merges a Renovate pull request once the PHP syntax check passes.
+- The PHP syntax check runs on pull requests into `develop` as well as `master`, using `php -l` instead of the unmaintained `overtrue/phplint@master` action. The `Cancel` workflow, which failed on every run because GitHub disabled the `set-env` command, is replaced by a `concurrency` group.
+
 ### Fixed
 - Exchange rate fetching in `class-frontend.php` now persists rates via `get_option()`/`update_option()` instead of `set_transient()`/`get_transient()`, so a failed OpenExchangeRates API request can no longer wipe out the last known good rates — the cached values now only get overwritten on a successful response.
 - A new `lsx_currencies_rates_updated` option tracks the last successful fetch time and gates the refresh interval (24 hours), replacing the transient's built-in expiry which was previously set to 12 hours instead of the intended 24.
